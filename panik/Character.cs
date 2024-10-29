@@ -10,15 +10,20 @@ namespace panik
     {
         public string Name { get; set; } = "";
         public string Description { get; set; } = "";
-        public string Dialog { get; set; } = "";
+        public string Dialogue { get; set; } = "";
         public Item? Item { get; set; }
 
-        public Character(string name,string description, string dialog, Item item = null) 
+        public Item? RequestedItem { get; set; }
+        public string? ThankYouDialogue {  get; set; }
+
+        public Character(string name,string description, string dialog, Item item = null, Item requestedItem = null, string thankYouDialogue = null) 
         {
             Name = name;
             Description = description;
-            Dialog = dialog;
+            Dialogue = dialog;
             Item = item;
+            RequestedItem = requestedItem;
+            ThankYouDialogue = thankYouDialogue;
         }
     }
 }

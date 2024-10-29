@@ -22,21 +22,7 @@ namespace panik
 
         public void Describe()
         {
-            Console.WriteLine($"Du har kommit in i {Name.ToLower()}. \n{Description}");
-            if (Character != null)
-            {
-                if (Character.Name == "Agneta Äppelkind")
-                {
-                    Console.WriteLine("Det är någon här!");
-                    Console.WriteLine($"Jag heter {Character.Name}, jag är slottets egna {Character.Description}. {Character.Dialog}");
-                    if (Character.Item != null)
-                    {
-                        Console.WriteLine($"Här, ta med denna {Character.Item.Name} på ditt äventyr!");
-                        Console.WriteLine($"Du har fått {Character.Item.Description}");
-
-                    }
-                }
-            }
+            Console.WriteLine($"Du har kommit till {Name.ToLower()}. \n{Description}");
         }
     }
 }
