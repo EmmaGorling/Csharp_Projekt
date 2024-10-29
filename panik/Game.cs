@@ -27,10 +27,11 @@ namespace panik
             Item potion = new Item("Moloktrutens Elixir", "En brygd som kan få håret att ändra färg! Men bara på vänster sida, förstås...");
 
             // Skapa karaktärer
-            Character wizard = new Character("Fritz Flamsfot", "trollkarl", "Som jag har väntat på dig äventyrare! Har du möjligt vis det magiska trollspöt med dig?");
+            Character wizard = new Character("Fritz Flamsfot", "trollkarl", "Som jag har väntat på dig äventyrare! Har du möjligtvis det magiska trollspöt med dig?");
             Character foodlady = new Character("Agneta Äppelkind", "mattant", "Vad fint att du kom! \nDoftar det inte ljuvligt av nybakat bröd och bullar?", bun);
             Character skeleton = new Character("Benjamin", "skelett", "Det är tyvärr för sent att rädda mig härifrån.. \nJag är inte ens skinn och ben längre, bara ben.", bone, bun, "Tack så mycket, det här får du av mig.");
             Character scientist = new Character("Doktor Bubbelgurgel Pannvrid", "galen alkemist", "Ah-ha! En besökare! \nVälkommen till Bubbelgurgels domäner! \nHär sprakar, puffar och, tja... exploderar det mest!", potion, feather, "Må stjärnstoftet följa dina fotspår och minns: i Bubbelgurgels värld är inget för konstigt!");
+            Character parrot = new Character("Sir Snorkelfjäder", "utan tvivel, världens vackraste papegoja", "Jag antar att du är här för att klura ut ett och annat, eller hur? \nVillrådig! Fumlig! Stackars lilla varelse… \nMen, men, Sir Snorkelfjäder är inte hjärtlös. Nej, nej, jag kan unna dig en av mina gåtor.\nOm du nu har tillräckligt med vett för att förstå, vill säga…", feather);
 
             // Skapa rum
             Room entrance = new Room("Hallen", "Det är en stor och flådig hall med högt i tak.");
@@ -41,11 +42,14 @@ namespace panik
             Room stairs = new Room("Trapporna", "En stor vacker trappa som leder upp till övervåningen och ett litet hålrum i vägen med en trappa ned till källaren");
             Room basement = new Room("Källaren", "Det är ett litet, mörkt rum gjort i sten.");
             Room lab = new Room("Laboratoriet", "Det är ett rum fyllt av provrör, tänger och glascylindrar fyllda med märkliga saker.", scientist);
+            Room library = new Room("Biblioteket", "Det är ett dammigt rum med bokhyllor från golv till tak, fyllda med magiska böcker.");
+            Room banquetHall = new Room("Festsalen", "Ett grandiost bankettrum med stora böljande gardiner och en scen.", parrot);
 
             // Lägg till utgångar till rummen
             entrance.Exits.Add("Framåt", stairs);
             entrance.Exits.Add("Höger", kitchen);
             entrance.Exits.Add("Vänster", livingRoom);
+            stairs.Exits.Add("Höger", banquetHall);
             stairs.Exits.Add("Vänster", basement);
             stairs.Exits.Add("Bakåt", entrance);
             basement.Exits.Add("Framåt", dungeon);
@@ -54,6 +58,9 @@ namespace panik
             lab.Exits.Add("Bakåt", basement);
             dungeon.Exits.Add("Bakåt", basement);
             kitchen.Exits.Add("Bakåt", entrance);
+            kitchen.Exits.Add("Vänster", banquetHall);
+            banquetHall.Exits.Add("Höger", kitchen);
+            banquetHall.Exits.Add("Bakåt", stairs);
             livingRoom.Exits.Add("Bakåt", entrance);
 
 
@@ -183,15 +190,27 @@ namespace panik
                 // Galna alkemisten
                 case "Doktor Bubbelgurgel Pannvrid":
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
-                    Console.WriteLine($"-{character.Dialogue} \nMånga ser mig som en {character.Description}, mitt namn är {character.Name}");
+                    Console.WriteLine($"-{character.Dialogue} \n Många ser mig som en {character.Description}, mitt namn är {character.Name}");
                     if (character.encountered == false)
                     {
-                        Console.WriteLine("Jo, du förstår... Jag är på jakt efter en väldigt specifik fjäder...");
+                        Console.WriteLine(" Jo, du förstår... Jag är på jakt efter en väldigt specifik fjäder...");
                     }
                     if (character.RequestedItem != null && inventory.Contains(character.RequestedItem))
                     {
-                        Console.WriteLine("Du har möjligtvis inte sett någon här i slottet?");
+                        Console.WriteLine(" Du har möjligtvis inte sett någon här i slottet?");
                         ExchangeDialogue(character);
+                    }
+                    Console.ResetColor();
+                    break;
+                // Papegojan
+                case "Sir Snorkelfjäder":
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.WriteLine($"-Det var länge sedan jag såg någon utomstående... \nMitt namn är {character.Name} och jag är {character.Description}");
+                    
+                    if (character.encountered == false)
+                    {
+                        Console.WriteLine($"{character.Dialogue}");
+                        Riddle(character);
                     }
                     Console.ResetColor();
                     break;
@@ -245,5 +264,23 @@ namespace panik
             }
             
         }
+        private void Riddle(Character character) 
+        {
+            Console.WriteLine("Redo...?\n[Vad blir blötare ju mer det torkar?]");
+            Console.ResetColor();
+            string answer = Console.ReadLine();
+            if (answer.ToLower() == "handduk" || answer.ToLower().Contains("handduk"))
+            {
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.WriteLine("Pff, rena turen! \nHär... Ta den här.");
+                GetItem(character);
+                character.encountered = true;
+            } else
+            {
+                Console.ForegroundColor= ConsoleColor.DarkYellow;
+                Console.WriteLine("Åh, stackars själ, förstår du ens frågan?");
+            }
+        }
+
     }
 }
