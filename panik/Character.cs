@@ -11,6 +11,7 @@ namespace panik
         public string Name { get; set; } = "";
         public string Description { get; set; } = "";
         public string Dialogue { get; set; } = "";
+        public bool encountered { get; set; } = false;
         public Item? Item { get; set; }
 
         public Item? RequestedItem { get; set; }
