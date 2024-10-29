@@ -13,7 +13,11 @@ namespace panik
         // Variabel för att hantera nuvarande rummet
         private Room currentRoom;
 
+        // Lista för att hantera samlade items
         public List<Item> inventory;
+
+        // Variabel för att hantera rum som ska läggas till vid senare tillfälle
+        private Room hiddenRoom;
 
         public Game() 
         {
@@ -71,12 +75,14 @@ namespace panik
             banquetHall.Exits.Add("Höger", kitchen);
             banquetHall.Exits.Add("Bakåt", stairs);
             livingRoom.Exits.Add("Bakåt", entrance);
+            atticStairs.Exits.Add("Bakåt", upstairs);
             attic.Exits.Add("Bakåt", atticStairs);
 
 
             // Starta spelet i hallen
             currentRoom = entrance;
 
+            hiddenRoom = attic;
             
         }
 
@@ -251,7 +257,7 @@ namespace panik
                     {
                         Console.WriteLine($"{character.Name} viftar på svansen, tar benet och går iväg..");
                         currentRoom.Character = null;
-                        return;
+                        currentRoom.Exits.Add("Framåt", hiddenRoom);
                     }
                     Console.ResetColor();
                     break;
@@ -286,7 +292,7 @@ namespace panik
             {
                 Console.ResetColor();
                 Thread.Sleep(500);
-                Console.WriteLine($"\nVill du ge {character.RequestedItem.Name} till {character.Name}? (Ja/Nej)");
+                Console.WriteLine($"\nVill du ge \"{character.RequestedItem.Name}\" till {character.Name}? (Ja/Nej)");
                 string answer = Console.ReadLine();
                 switch (answer)
                 {
