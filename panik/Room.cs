@@ -22,7 +22,7 @@ namespace panik
 
         public void Describe()
         {
-            Console.WriteLine($"Du har kommit till {Name.ToLower()}. \n{Description}");
+            Console.WriteLine($"Du har kommit till {Name.ToLower()}, {Description}");
         }
     }
 }
