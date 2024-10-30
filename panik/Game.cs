@@ -35,7 +35,7 @@ namespace panik
             Item potion = new Item("Moloktrutens Elixir", "En brygd som kan få håret att ändra färg! Men bara på vänster sida, förstås...");
 
             // Skapa karaktärer
-            Character wizard = new Character("Fritz Flamsfot", "mästare av magi och mysterier", "Som jag har väntat på dig äventyrare!", wand, potion);
+            Character wizard = new Character("Fritz Flamsfot", "mästare av magi och mysterier", "Som jag har väntat på dig äventyrare!", wand, potion, "Här, ta denna glittrande trollstav! \nDen kan kanske få något att hända... eller så kanske inte! Haha!");
             Character foodlady = new Character("Agneta Äppelkind", "mattant", "Vad fint att du kom! \nDoftar det inte ljuvligt av nybakat bröd och bullar?", bun);
             Character skeleton = new Character("Benjamin", "skelett", "Det är tyvärr för sent att rädda mig härifrån.. \nJag är inte ens skinn och ben längre, bara ben.", bone, bun, "Tack så mycket, det här får du av mig.");
             Character scientist = new Character("Doktor Bubbelgurgel Pannvrid", "galen alkemist", "Ah-ha! En besökare! \nVälkommen till Bubbelgurgels domäner! \nHär sprakar, puffar och, tja... exploderar det mest!", potion, feather, "Må stjärnstoftet följa dina fotspår och minns: i Bubbelgurgels värld är inget för konstigt!");
@@ -122,7 +122,7 @@ namespace panik
             Console.WriteLine("     ____--`~    '--~~__|.    |+++++__|----~    ~`---,              ___");
             Console.WriteLine("-~--~                   ~---__|,--~'                  ~~----_____-~'   `~----~~\n\n");
             Console.WriteLine("-------------------------------------------------------------------------------");
-            Console.WriteLine("           Välkommen till äventyret på slottet Borgen Blåbärsdal");
+            Console.WriteLine("              Välkommen till äventyret på slottet Blåbärsdal");
             Console.WriteLine("                 Tryck på en tangent för att börja spela!");
             Console.ReadKey();
             bool isPlaying = true;
@@ -327,6 +327,12 @@ namespace panik
                     if (character.RequestedItem != null && inventory.Contains(character.RequestedItem))
                     {
                         ExchangeDialogue(character);
+                    }
+                    if(character.encountered == true)
+                    {
+                        Console.ForegroundColor= ConsoleColor.DarkYellow;
+                        Console.WriteLine($"{character.ThankYouDialogue}");
+                        Console.ResetColor();
                     }
                     Console.ResetColor();
                     break;
