@@ -43,18 +43,18 @@ namespace panik
             Character guardDog = new Character("Fluffy", "stor, skräckinjagande hund", "Morr...", null, bone);
             Character princess = new Character("Prinsessan Asp", "elegant och vacker prinsessa", "Åh, tack för att du räddade mig!");
             Character frog = new Character("groda", "liten och slemmig", "Qvaaaaak", null, wand);
-            Character dad = new Character("Lord Fjällås", "slottets ägare", "Äntligen är du här! \nMin dotter... Hon skulle hjälpa trollkarlen med sitt gråa hår, men misslyckades. \nHan blev så arg att han förvandlade henne till groda. \nSnälla, rädda henne!");
+            Character dad = new Character("Lord Fjällås", "slottets ägare", "Äntligen är du här! \nMin dotter... Hon skulle hjälpa trollkarlen med sitt gråa hår, men misslyckades. \nHan blev så arg att han förvandlade henne till en groda. \nSnälla, rädda henne!");
  
 
             // Skapa rum
             Room entrance = new Room("Hallen", $"där kalla stenplattor ekar under dina steg och \nsvaga skuggor dansar i ljuset från en ensam lykta på väggen. \nEn gammal träbänk står intill väggen, märkt av tidens tand, \noch en svag doft av jord och fukt ligger i luften. \nFramför dig leder en bred trappa uppåt, \nmedan dörrar till vänster och höger tycks inbjuda till mörkare vrår av slottet.", dad);
             Room attic = new Room("Vinden", "där lågt i tak och lutande bjälkar ger platsen en \nhemlig, nästan kvävande atmosfär. \nStoft dansar i tunna strålar av ljus som sipprar in \nfrån ett smalt fönster, och rummet är fyllt av hyllor med \nmystiska flaskor, pergamentrullar och udda föremål som tycks glöda svagt.", wizard);
-            Room kitchen = new Room("Köket", "där doften av kryddor och örter omfamnar dig och \ndu hör vedens svaga knastrande från den stora ugnen. \nLjuset från flera stearinljus dansa över stenväggarna och \n skapar en mjuk, varm atmosfär.", foodlady);
+            Room kitchen = new Room("Köket", "där doften av kryddor och örter omfamnar dig och \ndu hör vedens svaga knastrande från den stora ugnen. \nLjuset från flera stearinljus dansa över stenväggarna och \nskapar en mjuk, varm atmosfär.", foodlady);
             Room dungeon = new Room("Fängelsehålan", "där luften är tjock av fukt och en svag, unken doft av mögel. \nVäggarna är kalla och våta, och långa järnkedjor hänger från stenblocken, \ndinglande som tysta påminnelser om tidigare fångar. \nEn svag ljusstrimma sipprar in genom ett smalt fönstergaller högt uppe på väggen, \nmen försvinner snabbt i mörkret som tycks kväva varje ljud och rörelse.", skeleton);
             Room livingRoom = new Room("Vardagsrumet", "där en öppen spis sprakar och kastar ett varmt, \ndansande ljus över de slitna stenväggarna. \nEn stor fåtölj med mjuka, nötta kuddar står vänd mot elden, och \nett litet bord bredvid bär spår av gamla tekoppar och en tjock bok som lämnats uppslagen. \nRummets mörka träpaneler och mjuka mattor ger en känsla av ro..", dad);
-            Room stairs = new Room("Trappugången", "där en bred, elegant trappa i mörkt trä leder majestätiskt upp till övervåningen. \nTrappans räcke är utsirat med detaljerade sniderier som fångar ljuset från \nde höga fönstren och skapar skuggor som dansar över golvet. \nTill vänster, nästan dold i skuggan, finns ett smalt skrymsle som leder nedåt mot källarens dolda djup. \nTill höger lockar ljudet av avlägsna röster och klingande glas från festsalen.");
-            Room basement = new Room("Källaren", "där väggarna är täckta av flagnande kalk och \nfuktpärlor som långsamt sipprar ned längs stenen. \nLjuset här är svagt, och skuggorna från en ensam lykta kastar darrande mönster över rummet. \nFramför dig finns två tunga dörrar: \nEn rakt fram, där kalla järnbeslag antyder vägen till fängelsehålan, \noch en till höger, som är täckt med fläckar av sot och \nsyraspill – spår som verkar till ett laboratorium.");
-            Room lab = new Room("Laboratoriet", "där luften är tung av kemikalier och en svag doft av bränt socker. \nHyllor sträcker sig längs väggarna, fyllda med flaskor av alla former och färger, \nnågra glittrar som stjärnor, medan andra är grumliga och mystiska. \nPå det stora träbordet i rummets mitt ligger ett kaos av uråldriga böcker, \nkvicksilver och otydliga anteckningar, som tycks vara nedskrivna av ett galet geni.", scientist);
+            Room stairs = new Room("Trappuppgången", "där en bred, elegant trappa i mörkt trä leder majestätiskt upp till övervåningen. \nTrappans räcke är utsirat med detaljerade sniderier som fångar ljuset från \nde höga fönstren och skapar skuggor som dansar över golvet. \nTill vänster, nästan dold i skuggan, finns ett smalt skrymsle som leder nedåt mot källarens dolda djup. \nTill höger lockar ljudet av avlägsna röster och klingande glas från festsalen.");
+            Room basement = new Room("Källaren", "där väggarna är täckta av flagnande kalk och \nfuktpärlor som långsamt sipprar ned längs stenen. \nLjuset här är svagt, och skuggorna från en ensam lykta kastar darrande mönster över rummet. \nFramför dig finns två tunga dörrar: \nEn rakt fram, där kalla järnbeslag antyder vägen till fängelsehålan, \noch en till höger, som är täckt med fläckar av sot och \nsyraspill – spår som verkar leda till ett laboratorium.");
+            Room lab = new Room("Laboratoriet", "där luften är tung av kemikalier och en svag doft av bränt socker möter din näsa. \nHyllor sträcker sig längs väggarna, fyllda med flaskor av alla former och färger, \nnågra glittrar som stjärnor, medan andra är grumliga och mystiska. \nPå det stora träbordet i rummets mitt ligger ett kaos av uråldriga böcker, \nkvicksilver och otydliga anteckningar, som tycks vara nedskrivna av ett galet geni.", scientist);
             Room library = new Room("Biblioteket", "där tysta viskningar av historia och kunskap svävar i luften. \nHöga bokhyllor sträcker sig upp mot taket, fyllda med gamla volymer och \ndammiga tomma pärmar som bär på hemligheter från svunna tider. \nEtt mjukt ljus flödar från en stor fönsterbåge som släpper in strålar av sol, \noch i rummets mitt står ett stort träbord, omgiven av tunga läderstolar, \ndär böcker och pergament ligger utspridda.");
             Room banquetHall = new Room("Festsalen", "där taket svänger högt över dig, dekorerat med eleganta stuckaturer som \nfångar ljuset från stora, hängande ljuskronor. \nRummets väggar är klädda med djupa, rika färger och tunga \ndraperier som verkar viska om festligheter och storslagna sammankomster.", parrot);
             Room upstairs = new Room("Övervåningens hall", "där skuggorna samlas i hörnen och ett svagt ljus strömmar in \ngenom ett stort fönster som ger rummet en dämpad glöd. \nTill höger leder en tung dörr in till biblioteket, vars mörka hyllor tycks \ngömma hemligheter som inte vill bli funna. \nRakt fram står en dörr som öppnar till vindstrappan, där trappstegen försvinner i \ndunklet och viskar om det okända. \nTill vänster finns en annan dörr, prydd med mystiska inskriptioner, \nsom antyder att något oväntat döljer sig där bakom.");
@@ -62,31 +62,31 @@ namespace panik
             Room princessChamber = new Room("Prinsessans kammare", "där en drömmande atmosfär genomsyrar rummet. \nMjuka, pastellfärgade väggar är prydda med delikata tapeter som \nskildrar scener från sagor och legender. \nI ett hörn står en liten skrivbord med en öppen dagbok, där \ntankar och drömmar väntar på att bli lästa.", frog);
 
             // Lägg till utgångar till rummen
-            entrance.Exits.Add("Framåt", stairs);
+            entrance.Exits.Add("Upp", stairs);
             entrance.Exits.Add("Höger", kitchen);
             entrance.Exits.Add("Vänster", livingRoom);
-            stairs.Exits.Add("Framåt",upstairs);
+            stairs.Exits.Add("Upp",upstairs);
             stairs.Exits.Add("Höger", banquetHall);
             stairs.Exits.Add("Vänster", basement);
-            stairs.Exits.Add("Bakåt", entrance);
-            upstairs.Exits.Add("Framåt", atticStairs);
+            stairs.Exits.Add("Ned", entrance);
+            upstairs.Exits.Add("Upp", atticStairs);
             upstairs.Exits.Add("Höger", library);
             upstairs.Exits.Add("Vänster", princessChamber);
-            upstairs.Exits.Add("Bakåt", stairs);
-            basement.Exits.Add("Framåt", dungeon);
+            upstairs.Exits.Add("Ned", stairs);
+            basement.Exits.Add("Upp", dungeon);
             basement.Exits.Add("Höger", lab);
-            basement.Exits.Add("Bakåt", stairs);
-            lab.Exits.Add("Bakåt", basement);
-            dungeon.Exits.Add("Bakåt", basement);
-            kitchen.Exits.Add("Bakåt", entrance);
+            basement.Exits.Add("Ned", stairs);
+            lab.Exits.Add("Ned", basement);
+            dungeon.Exits.Add("Ned", basement);
+            kitchen.Exits.Add("Ned", entrance);
             kitchen.Exits.Add("Vänster", banquetHall);
             banquetHall.Exits.Add("Höger", kitchen);
-            banquetHall.Exits.Add("Bakåt", stairs);
-            livingRoom.Exits.Add("Bakåt", entrance);
-            atticStairs.Exits.Add("Bakåt", upstairs);
-            attic.Exits.Add("Bakåt", atticStairs);
-            princessChamber.Exits.Add("Bakåt", upstairs);
-            library.Exits.Add("Bakåt", upstairs);
+            banquetHall.Exits.Add("Ned", stairs);
+            livingRoom.Exits.Add("Ned", entrance);
+            atticStairs.Exits.Add("Ned", upstairs);
+            attic.Exits.Add("Ned", atticStairs);
+            princessChamber.Exits.Add("Ned", upstairs);
+            library.Exits.Add("Ned", upstairs);
 
 
             // Starta spelet i hallen
@@ -182,7 +182,7 @@ namespace panik
             string ConvertedDirection;
             if (direction == ConsoleKey.UpArrow)
             {
-                ConvertedDirection = "Framåt";
+                ConvertedDirection = "Upp";
             }
             else if (direction == ConsoleKey.LeftArrow)
             {
@@ -194,7 +194,7 @@ namespace panik
             }
             else 
             {
-                ConvertedDirection = "Bakåt";
+                ConvertedDirection = "Ned";
             }
 
             if (currentRoom.Exits.ContainsKey(ConvertedDirection))
@@ -230,7 +230,7 @@ namespace panik
                         character.Dialogue = "Åååh min dotter...";
                     } else
                     {
-                        Console.WriteLine($"{character.Dialogue}");
+                        Console.WriteLine($"{character.Dialogue}\n");
                         Console.ResetColor();
                         Console.WriteLine($"Jämrar {character.Name}");
                     }
@@ -311,7 +311,7 @@ namespace panik
                         Console.ResetColor();
                         Console.WriteLine($"{character.Name} viftar på svansen, tar benet och går iväg..");
                         currentRoom.Character = null;
-                        currentRoom.Exits.Add("Framåt", hiddenRoom);
+                        currentRoom.Exits.Add("Upp", hiddenRoom);
                     }
                     Console.ResetColor();
                     break;
@@ -322,7 +322,7 @@ namespace panik
                     Thread.Sleep(300);
                     if (character.encountered == false)
                     {
-                        Console.WriteLine($"\nSnälla säg att du har fått med dig min hårfärg.");
+                        Console.WriteLine($"\nSnälla säg att du har fått med dig min hårfärg?");
                     }
                     if (character.RequestedItem != null && inventory.Contains(character.RequestedItem))
                     {
