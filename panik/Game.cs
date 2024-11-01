@@ -14,7 +14,7 @@ namespace panik
         private Room currentRoom;
 
         // Lista för att hantera samlade items
-        public List<Item> inventory;
+        public List<Item> inventory = new List<Item>();
 
         // Variabel för att hantera rum som ska läggas till vid senare tillfälle
         private Room hiddenRoom;
@@ -24,8 +24,6 @@ namespace panik
 
         public Game() 
         {
-            // Skapa nu lista för ryggsäcken
-            inventory = new List<Item>();
 
             // Skapa items
             Item bun = new Item("Bulle", "En varm, nygräddad kanelbulle");
@@ -92,8 +90,10 @@ namespace panik
             // Starta spelet i hallen
             currentRoom = entrance;
 
+            // Rum som ska öppnas senare i spelet
             hiddenRoom = attic;
 
+            // Karaktär som ska bytas ut i ett av rummen
             princessCharacter = princess;
             
         }
