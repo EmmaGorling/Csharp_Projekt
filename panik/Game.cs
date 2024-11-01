@@ -137,7 +137,7 @@ namespace panik
                 currentRoom.Describe();
                 if (currentRoom.Character != null)
                 {
-                    Dialog(currentRoom.Character, currentRoom);   
+                    Dialogue(currentRoom.Character, currentRoom);   
                 }
 
                 // Fråga vart spelaren vill gå och lista möjliga vägar
@@ -209,7 +209,7 @@ namespace panik
         }
 
         // Dialoger med karaktärerna
-        private void Dialog(Character character, Room currentRoom)
+        private void Dialogue(Character character, Room currentRoom)
         {
             Thread.Sleep(300);
             Console.WriteLine("\nDet är någon här!\n\n");
