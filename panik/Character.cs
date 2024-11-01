@@ -11,13 +11,14 @@ namespace panik
         public string Name { get; set; } = "";
         public string Description { get; set; } = "";
         public string Dialogue { get; set; } = "";
-        public bool encountered { get; set; } = false;
+        public bool Encountered { get; set; } = false;
         public Item? Item { get; set; }
 
         public Item? RequestedItem { get; set; }
         public string? ThankYouDialogue {  get; set; }
 
-        public Character(string name,string description, string dialog, Item item = null, Item requestedItem = null, string thankYouDialogue = null) 
+        public Character(string name,string description, string dialog, Item item = null, 
+                            Item requestedItem = null,string thankYouDialogue = null) 
         {
             Name = name;
             Description = description;

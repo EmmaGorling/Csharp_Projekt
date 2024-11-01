@@ -251,7 +251,7 @@ namespace panik
                 case "Benjamin":
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
                     Console.WriteLine($"Jag heter {character.Name}, som du ser är jag ett {character.Description}... {character.Dialogue}");
-                    if (character.encountered == false)
+                    if (character.Encountered == false)
                     {
                         Thread.Sleep(300);
                         Console.WriteLine("\nMen det hade ju varit gott med en bulle...");
@@ -267,7 +267,7 @@ namespace panik
                 case "Doktor Bubbelgurgel Pannvrid":
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
                     Console.WriteLine($"{character.Dialogue} \nMånga ser mig som en {character.Description}, mitt namn är {character.Name}");
-                    if (character.encountered == false)
+                    if (character.Encountered == false)
                     {
                         Thread.Sleep(300);
                         Console.WriteLine("\nJo, du förstår... Jag är på jakt efter en väldigt specifik fjäder...");
@@ -284,7 +284,7 @@ namespace panik
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
                     Console.WriteLine($"Det var länge sedan jag såg någon utomstående... \nMitt namn är {character.Name} och jag är {character.Description}");
                     Thread.Sleep(300);
-                    if (character.encountered == false)
+                    if (character.Encountered == false)
                     {
                         Console.WriteLine($"\n{character.Dialogue}");
                         Riddle(character);
@@ -296,7 +296,7 @@ namespace panik
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
                     Console.WriteLine($"{character.Dialogue}");
                     Thread.Sleep(300);
-                    if (character.encountered == false)
+                    if (character.Encountered == false)
                     {
                         Console.WriteLine($"\n{character.Dialogue}");
                         Console.ResetColor();
@@ -306,7 +306,7 @@ namespace panik
                     {
                         ExchangeDialogue(character);
                     }
-                    if(character.encountered == true)
+                    if(character.Encountered == true)
                     {
                         Console.ResetColor();
                         Console.WriteLine($"{character.Name} viftar på svansen, tar benet och går iväg..");
@@ -320,7 +320,7 @@ namespace panik
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
                     Console.WriteLine($"Jag är {character.Name}, {character.Description}. \n{character.Dialogue}");
                     Thread.Sleep(300);
-                    if (character.encountered == false)
+                    if (character.Encountered == false)
                     {
                         Console.WriteLine($"\nSnälla säg att du har fått med dig min hårfärg?");
                     }
@@ -328,7 +328,7 @@ namespace panik
                     {
                         ExchangeDialogue(character);
                     }
-                    if(character.encountered == true)
+                    if(character.Encountered == true)
                     {
                         Console.ForegroundColor= ConsoleColor.DarkYellow;
                         Console.WriteLine($"{character.ThankYouDialogue}");
@@ -347,7 +347,7 @@ namespace panik
                     {
                         ExchangeDialogue(character);
                     }
-                    if (character.encountered == true)
+                    if (character.Encountered == true)
                     {
                         currentRoom.Character = princessCharacter;
                         EndGame(currentRoom.Character);
@@ -386,18 +386,18 @@ namespace panik
                 Thread.Sleep(300);
                 Console.WriteLine($"\nVill du ge \"{character.RequestedItem.Name}\" till {character.Name}? (Ja/Nej)");
                 string answer = Console.ReadLine();
-                switch (answer)
+                switch (answer.ToLower())
                 {
-                    case "Ja":
+                    case "ja":
                         inventory.Remove(character.RequestedItem);
                         GiveItem(character);
                         if (character.Item != null)
                         {
                             GetItem(character);
                         }
-                        character.encountered = true;
+                        character.Encountered = true;
                         return;
-                    case "Nej":
+                    case "nej":
                         Console.WriteLine("\n....");
                         return;
                     default:
@@ -422,7 +422,7 @@ namespace panik
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
                     Console.WriteLine("\nPff, rena turen! \nHär... Ta den här.");
                     GetItem(character);
-                    character.encountered = true;
+                    character.Encountered = true;
                     return;
                 }
                 else
