@@ -178,7 +178,7 @@ namespace panik
         // Gå åt något håll och byta rum
         private void Move(ConsoleKey direction)
         {
-            // Konvertera piltangent till riktning
+            // Konvertera piltangent till riktning (sträng)
             string ConvertedDirection;
             if (direction == ConsoleKey.UpArrow)
             {
@@ -202,6 +202,7 @@ namespace panik
             {
                 currentRoom = currentRoom.Exits[ConvertedDirection];
             }
+            // Om angiven riktning inte finns, skriv ut felmeddelande
             else 
             {
                 Console.WriteLine("Du kan inte gå åt det hållet.\nTryck på valfri tanget för att fortsätta");
@@ -219,6 +220,7 @@ namespace panik
                 // Lord Fjällås
                 case "Lord Fjällås":
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    // Första mötet i hallen
                     if (currentRoom.Name == "Hallen")
                     {
                         Console.WriteLine($"Mitt namn är {character.Name}, det är jag som är {character.Description}");
@@ -229,7 +231,9 @@ namespace panik
                         Console.ReadKey();
                         currentRoom.Character = null;
                         character.Dialogue = "Åååh min dotter...";
-                    } else
+                    }
+                    // Resterande möten i vardagsrummet
+                    else
                     {
                         Console.WriteLine($"{character.Dialogue}\n");
                         Console.ResetColor();
@@ -240,6 +244,7 @@ namespace panik
                 case "Agneta Äppelkind":
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
                     Console.WriteLine($"Jag heter {character.Name}, jag är slottets egna {character.Description}. {character.Dialogue}");
+                    // Om karaktären har ett Item
                     if (character.Item != null)
                     {
                         Thread.Sleep(300);
@@ -252,11 +257,13 @@ namespace panik
                 case "Benjamin":
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
                     Console.WriteLine($"Jag heter {character.Name}, som du ser är jag ett {character.Description}... {character.Dialogue}");
+                    // Om karaktär inte fått efterfrågat item
                     if (character.Encountered == false)
                     {
                         Thread.Sleep(300);
                         Console.WriteLine("\nMen det hade ju varit gott med en bulle...");
                     }
+                    // Om det efterfrågade föremålet finns i inventory
                     if (character.RequestedItem != null && inventory.Contains(character.RequestedItem))
                     {
                         Console.WriteLine("\nHar du möjligtvis en bulle med dig?");
@@ -268,11 +275,13 @@ namespace panik
                 case "Doktor Bubbelgurgel Pannvrid":
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
                     Console.WriteLine($"{character.Dialogue} \nMånga ser mig som en {character.Description}, mitt namn är {character.Name}");
+                    // Om karaktär inte fått efterfrågat item
                     if (character.Encountered == false)
                     {
                         Thread.Sleep(300);
                         Console.WriteLine("\nJo, du förstår... Jag är på jakt efter en väldigt specifik fjäder...");
                     }
+                    // Om det efterfrågade föremålet finns i inventory
                     if (character.RequestedItem != null && inventory.Contains(character.RequestedItem))
                     {
                         Console.WriteLine("\nDu har möjligtvis inte sett någon här i slottet?");
@@ -285,6 +294,7 @@ namespace panik
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
                     Console.WriteLine($"Det var länge sedan jag såg någon utomstående... \nMitt namn är {character.Name} och jag är {character.Description}");
                     Thread.Sleep(300);
+                    // Om fjäder inte fåtts från papegojan
                     if (character.Encountered == false)
                     {
                         Console.WriteLine($"\n{character.Dialogue}");
@@ -297,16 +307,19 @@ namespace panik
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
                     Console.WriteLine($"{character.Dialogue}");
                     Thread.Sleep(300);
+                    // Om karaktär inte fått efterfrågat item
                     if (character.Encountered == false)
                     {
                         Console.WriteLine($"\n{character.Dialogue}");
                         Console.ResetColor();
                         Console.WriteLine($"\nHunden verkar vilja ha något...");
                     }
+                    // Om det efterfrågade föremålet finns i inventory
                     if (character.RequestedItem != null && inventory.Contains(character.RequestedItem))
                     {
                         ExchangeDialogue(character);
                     }
+                    // Om efterfrågat föremål getts, ta bort karaktär från rum och lägg till utgången till vinden
                     if(character.Encountered == true)
                     { 
                         Console.WriteLine($"{character.Name} viftar på svansen, tar benet och går iväg..");
@@ -320,10 +333,12 @@ namespace panik
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
                     Console.WriteLine($"Jag är {character.Name}, {character.Description}. \n{character.Dialogue}");
                     Thread.Sleep(300);
+                    // Om karaktär inte fått efterfrågat item
                     if (character.Encountered == false)
                     {
                         Console.WriteLine($"\nSnälla säg att du har fått med dig min hårfärg?");
                     }
+                    // Om det efterfrågade föremålet finns i inventory
                     if (character.RequestedItem != null && inventory.Contains(character.RequestedItem))
                     {
                         ExchangeDialogue(character);
@@ -337,10 +352,12 @@ namespace panik
                     Console.WriteLine($"{character.Dialogue}\n");
                     Console.ResetColor();
                     Console.WriteLine("Det verkar ligga någon förtrollning över grodan...");
+                    // Om det efterfrågade föremålet finns i inventory
                     if (character.RequestedItem != null && inventory.Contains(character.RequestedItem))
                     {
                         ExchangeDialogue(character);
                     }
+                    // Om grodan har getts sitt efterfrågade föremål, sätt rummets karaktär till prinsessan och anropa EndGame
                     if (character.Encountered == true)
                     {
                         currentRoom.Character = princessCharacter;
@@ -353,9 +370,10 @@ namespace panik
                     break;
             }
         }
-        // Metod som skriver ut att användaren ger föremål och tar bort det från inventory
+        // Ge föremål till karaktär
         private void GiveItem(Character character) 
         {
+            // Ge föremål till karaktär, karaktärens tackdialog skrivs ut, efterfrågat föremål tas bort från inventory & requestedItem sätt till null
             Console.ResetColor();
             Console.WriteLine($"\nDu gav föremålet \"{character.RequestedItem.Name}\" till {character.Name}");
             Console.ForegroundColor = ConsoleColor.DarkYellow;
@@ -364,37 +382,48 @@ namespace panik
             inventory.Remove(character.RequestedItem);
             character.RequestedItem = null;
         }
-        // Metod som skriver ut att användaren får föremål, lägger till inventory och tar bort det från karaktären
+        // Få föremål från karaktär 
         private void GetItem(Character character)
         {
+            // skriv ut att användaren får föremål, lägger till i inventory och tar bort det från karaktären
             Console.ResetColor();
             Console.WriteLine($"\nDu har fått föremålet \"{character.Item.Name}\". {character.Item.Description}");
             inventory.Add(character.Item);
             character.Item = null;
         }
+
+        //  Byta föremål
         private void ExchangeDialogue(Character character)
         {
             while (true)
             {
+                // Rensa konsol, vänta 0,3 sek, fråga om spelare vill ge sitt föremål
                 Console.ResetColor();
                 Thread.Sleep(300);
                 Console.WriteLine($"\nVill du ge \"{character.RequestedItem.Name}\" till {character.Name}? (Ja/Nej)");
                 string answer = Console.ReadLine();
+                // Kolla svaret
                 switch (answer.ToLower())
                 {
                     case "ja":
+                        // Om ja, ta bort efterfrågat föremål från inventory
                         inventory.Remove(character.RequestedItem);
+                        // Ge Item
                         GiveItem(character);
+                        // Om karaktären har ett Item att ge anropa GetItem
                         if (character.Item != null)
                         {
                             GetItem(character);
                         }
+                        // Sätt karaktär som mött och avbryt loopen
                         character.Encountered = true;
                         return;
                     case "nej":
+                        // Nej, avrbyt loopen
                         Console.WriteLine("\n....");
                         return;
                     default:
+                        // Felaktig inmatning kör om loop
                         Console.WriteLine("\nAnge Ja eller Nej");
                         continue;
                 }
@@ -404,13 +433,16 @@ namespace panik
         private void Riddle(Character character) 
         {
             while (true)
-            {
+            {   
+                // Fördröj 0,3 sek, skriv gåta
                 Thread.Sleep(300);
                 Console.WriteLine("\nRedo...?");
                 Console.WriteLine("\nVad blir blötare ju mer det torkar?");
                 Console.ResetColor();
+                // Ta emot svar, vänta 0,5 sek
                 string answer = Console.ReadLine();
                 Thread.Sleep(500);
+                // Om svar är handduk eller innehåller handduk, ge förmål till spelare, avbryt loop
                 if (answer.ToLower() == "handduk" || answer.ToLower().Contains("handduk"))
                 {
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
@@ -419,6 +451,7 @@ namespace panik
                     character.Encountered = true;
                     return;
                 }
+                // Om fel svar, kör om loop
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
@@ -427,8 +460,11 @@ namespace panik
                 }
             }
         }
+
+        // Endgame
         private void EndGame(Character character) 
         { 
+            // Rensa konsol och skriv ut spelets slut
             Console.Clear();
             Thread.Sleep(200);
             Console.WriteLine(".... Poof!\n");
