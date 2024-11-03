@@ -49,7 +49,7 @@ namespace panik
             Room attic = new Room("Vinden", "där lågt i tak och lutande bjälkar ger platsen en \nhemlig, nästan kvävande atmosfär. \nStoft dansar i tunna strålar av ljus som sipprar in \nfrån ett smalt fönster, och rummet är fyllt av hyllor med \nmystiska flaskor, pergamentrullar och udda föremål som tycks glöda svagt.", wizard);
             Room kitchen = new Room("Köket", "där doften av kryddor och örter omfamnar dig och \ndu hör vedens svaga knastrande från den stora ugnen. \nLjuset från flera stearinljus dansa över stenväggarna och \nskapar en mjuk, varm atmosfär.", foodlady);
             Room dungeon = new Room("Fängelsehålan", "där luften är tjock av fukt och en svag, unken doft av mögel. \nVäggarna är kalla och våta, och långa järnkedjor hänger från stenblocken, \ndinglande som tysta påminnelser om tidigare fångar. \nEn svag ljusstrimma sipprar in genom ett smalt fönstergaller högt uppe på väggen, \nmen försvinner snabbt i mörkret som tycks kväva varje ljud och rörelse.", skeleton);
-            Room livingRoom = new Room("Vardagsrumet", "där en öppen spis sprakar och kastar ett varmt, \ndansande ljus över de slitna stenväggarna. \nEn stor fåtölj med mjuka, nötta kuddar står vänd mot elden, och \nett litet bord bredvid bär spår av gamla tekoppar och en tjock bok som lämnats uppslagen. \nRummets mörka träpaneler och mjuka mattor ger en känsla av ro..", dad);
+            Room livingRoom = new Room("Vardagsrummet", "där en öppen spis sprakar och kastar ett varmt, \ndansande ljus över de slitna stenväggarna. \nEn stor fåtölj med mjuka, nötta kuddar står vänd mot elden, och \nett litet bord bredvid bär spår av gamla tekoppar och en tjock bok som lämnats uppslagen. \nRummets mörka träpaneler och mjuka mattor ger en känsla av ro..", dad);
             Room stairs = new Room("Trappuppgången", "där en bred, elegant trappa i mörkt trä leder majestätiskt upp till övervåningen. \nTrappans räcke är utsirat med detaljerade sniderier som fångar ljuset från \nde höga fönstren och skapar skuggor som dansar över golvet. \nTill vänster, nästan dold i skuggan, finns ett smalt skrymsle som leder nedåt mot källarens dolda djup. \nTill höger lockar ljudet av avlägsna röster och klingande glas från festsalen.");
             Room basement = new Room("Källaren", "där väggarna är täckta av flagnande kalk och \nfuktpärlor som långsamt sipprar ned längs stenen. \nLjuset här är svagt, och skuggorna från en ensam lykta kastar darrande mönster över rummet. \nFramför dig finns två tunga dörrar: \nEn rakt fram, där kalla järnbeslag antyder vägen till fängelsehålan, \noch en till höger, som är täckt med fläckar av sot och \nsyraspill – spår som verkar leda till ett laboratorium.");
             Room lab = new Room("Laboratoriet", "där luften är tung av kemikalier och en svag doft av bränt socker möter din näsa. \nHyllor sträcker sig längs väggarna, fyllda med flaskor av alla former och färger, \nnågra glittrar som stjärnor, medan andra är grumliga och mystiska. \nPå det stora träbordet i rummets mitt ligger ett kaos av uråldriga böcker, \nkvicksilver och otydliga anteckningar, som tycks vara nedskrivna av ett galet geni.", scientist);
@@ -125,9 +125,8 @@ namespace panik
             Console.WriteLine("              Välkommen till äventyret på slottet Blåbärsdal");
             Console.WriteLine("                 Tryck på en tangent för att börja spela!");
             Console.ReadKey();
-            bool isPlaying = true;
 
-            while (isPlaying)
+            while (true)
             {
                 // Rensa konsol och vänta 0.5 sek innan fortsatt utskrift
                 Console.Clear();
