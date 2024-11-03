@@ -153,7 +153,7 @@ namespace panik
                 // Ta in vilket håll användaren vill gå åt
                 var direction = Console.ReadKey().Key;
                 
-
+                // Om korrekt angivelse anropa Move, annars skriv ut meddelande och börja om
                 switch (direction) 
                 {
                     case ConsoleKey.UpArrow:
@@ -170,7 +170,7 @@ namespace panik
                         }
                         Console.WriteLine("Tryck på en tangent för att fortsätta.");
                         Console.ReadKey();
-                    break;
+                        break;
                 }
             }
         }
@@ -178,6 +178,7 @@ namespace panik
         // Gå åt något håll och byta rum
         private void Move(ConsoleKey direction)
         {
+            // Konvertera piltangent till riktning
             string ConvertedDirection;
             if (direction == ConsoleKey.UpArrow)
             {
@@ -196,6 +197,7 @@ namespace panik
                 ConvertedDirection = "Ned";
             }
 
+            // Om samlingen utgångar innehåller riktning sätts aktuellt rum till riktningens rum
             if (currentRoom.Exits.ContainsKey(ConvertedDirection))
             {
                 currentRoom = currentRoom.Exits[ConvertedDirection];
@@ -241,7 +243,7 @@ namespace panik
                     if (character.Item != null)
                     {
                         Thread.Sleep(300);
-                        Console.WriteLine($"\nHär, ta med denna {character.Item.Name} på ditt äventyr!");
+                        Console.WriteLine($"\nHär, ta med denna {character.Item.Name.ToLower()} på ditt äventyr!");
                         GetItem(character);
                     }
                     Console.ResetColor();
@@ -306,8 +308,7 @@ namespace panik
                         ExchangeDialogue(character);
                     }
                     if(character.Encountered == true)
-                    {
-                        Console.ResetColor();
+                    { 
                         Console.WriteLine($"{character.Name} viftar på svansen, tar benet och går iväg..");
                         currentRoom.Character = null;
                         currentRoom.Exits.Add("Upp", hiddenRoom);
@@ -326,12 +327,6 @@ namespace panik
                     if (character.RequestedItem != null && inventory.Contains(character.RequestedItem))
                     {
                         ExchangeDialogue(character);
-                    }
-                    if(character.Encountered == true)
-                    {
-                        Console.ForegroundColor= ConsoleColor.DarkYellow;
-                        Console.WriteLine($"{character.ThankYouDialogue}");
-                        Console.ResetColor();
                     }
                     Console.ResetColor();
                     break;
@@ -375,7 +370,7 @@ namespace panik
             Console.ResetColor();
             Console.WriteLine($"\nDu har fått föremålet \"{character.Item.Name}\". {character.Item.Description}");
             inventory.Add(character.Item);
-            currentRoom.Character.Item = null;
+            character.Item = null;
         }
         private void ExchangeDialogue(Character character)
         {
@@ -412,7 +407,7 @@ namespace panik
             {
                 Thread.Sleep(300);
                 Console.WriteLine("\nRedo...?");
-                Console.WriteLine("\n[Vad blir blötare ju mer det torkar?]");
+                Console.WriteLine("\nVad blir blötare ju mer det torkar?");
                 Console.ResetColor();
                 string answer = Console.ReadLine();
                 Thread.Sleep(500);
