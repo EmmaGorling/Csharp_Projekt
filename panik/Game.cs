@@ -406,8 +406,6 @@ namespace panik
                 switch (answer.ToLower())
                 {
                     case "ja":
-                        // Om ja, ta bort efterfrågat föremål från inventory
-                        inventory.Remove(character.RequestedItem);
                         // Ge Item
                         GiveItem(character);
                         // Om karaktären har ett Item att ge anropa GetItem
